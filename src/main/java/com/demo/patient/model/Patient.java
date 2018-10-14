@@ -15,33 +15,34 @@ public class Patient implements Serializable {
 	@Id
 	@GeneratedValue
 	
-	private Long pid;
-		
+	private Long id;
+	private String name;
+	private String gender;
+	private int address_id;
 	
-	private String pname;
-	
-	
-	private String pgender;
-	
-	
-	
-	public Long getPid() {
-		return pid;
+	public int getAddress_id() {
+		return address_id;
 	}
-	public void setPid(Long pid) {
-		this.pid = pid;
+	public void setAddress_id(int address_id) {
+		this.address_id = address_id;
 	}
-	public String getPname() {
-		return pname;
+	public Long getid() {
+		return id;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setid(Long id) {
+		this.id = id;
 	}
-	public String getPgender() {
-		return pgender;
+	public String getname() {
+		return name;
 	}
-	public void setPgender(String pgender) {
-		this.pgender = pgender;
+	public void setPname(String name) {
+		this.name = name;
+	}
+	public String getgender() {
+		return gender;
+	}
+	public void setPgender(String gender) {
+		this.gender = gender;
 	}
 	
 
