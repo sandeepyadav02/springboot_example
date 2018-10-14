@@ -1,15 +1,25 @@
 package com.demo.patient.controller;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
+import javax.tools.DocumentationTool.Location;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+
+
+
 
 import com.demo.patient.model.Patient;
 import com.demo.patient.model.PatientAddress;
@@ -18,6 +28,9 @@ import com.demo.patient.repository.PatientRepository;
 import com.demo.patient.repository.PatientsAddressManytoOneRepository;
 import com.demo.patient.service.PatientService;
 import com.demo.patient.repository.PatientAddressRepository;
+
+
+
 
 @RestController
 @RequestMapping(value = "/api")
@@ -78,6 +91,8 @@ public class PatientController {
 		patientService.deletePatentDetails(id);
 		return ResponseEntity.noContent().build();
 	}
+    
+
 
 	
 	
@@ -115,4 +130,14 @@ public class PatientController {
 		PatientsAddressManytoOne savedPatientAdd = patientsAddressManytoOneRepository.save(patientsAddressManytoOne);
 		return ResponseEntity.noContent().build();
 	}
-}
+
+	
+		
+
+	
+	
+
+	}
+    
+
+
