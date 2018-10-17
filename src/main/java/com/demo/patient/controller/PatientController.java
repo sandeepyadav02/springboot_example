@@ -17,17 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
-
-
-
-import com.demo.patient.model.Patient;
-import com.demo.patient.model.PatientAddress;
-import com.demo.patient.model.PatientsAddressManytoOne;
 import com.demo.patient.repository.PatientRepository;
-import com.demo.patient.repository.PatientsAddressManytoOneRepository;
+
 import com.demo.patient.service.PatientService;
+import com.demo.patient.entity.Patient;
+import com.demo.patient.entity.PatientAddress;
 import com.demo.patient.repository.PatientAddressRepository;
+
 
 
 
@@ -44,11 +40,12 @@ public class PatientController {
 	@Autowired
 	PatientAddressRepository patientAddressRepository;
 	
-	@Autowired
-	PatientsAddressManytoOneRepository patientsAddressManytoOneRepository;
+	
+	
+	
 	
 
-	@RequestMapping(value = "/Patient", method = RequestMethod.GET)
+	@RequestMapping(value = "/patient", method = RequestMethod.GET)
 	public List<Patient> getAllPatient() {
 		System.out.print("patient details" + patientService.getPatientDetails());
 		return patientService.getPatientDetails();
@@ -62,16 +59,14 @@ public class PatientController {
 	}
 	
 	
-	@RequestMapping(value = "/PatientsAddressManytoOne", method = RequestMethod.GET)
-	public List<PatientsAddressManytoOne> getAllPatientsAddressManytoOne() {
-		System.out.print("patient details" + patientService.getPatientsAddressManytoOneDetails());
-		return patientService.getPatientsAddressManytoOneDetails();
-	}
 	
 	
 	
 	
-	@RequestMapping(value = "/PatientAddress/{pid}", method = RequestMethod.PUT)
+	
+	
+	
+	@RequestMapping(value = "/PatientAddress/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> updatePatientAddress(@RequestBody PatientAddress patientAddress, @PathVariable long id) {
 
 		Optional<PatientAddress> PatientAddressOptional = patientAddressRepository.findById(id);
@@ -79,7 +74,7 @@ public class PatientController {
 		if (!PatientAddressOptional.isPresent())
 			return ResponseEntity.notFound().build();
 
-		patientAddress.setAddress_id(id);
+		//patientAddress.setAddress_id(id);
 
 		patientAddressRepository.save(patientAddress);
 
@@ -112,24 +107,20 @@ public class PatientController {
 	}
 
 	
-	@RequestMapping(value = "/Patient/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Object> createPatient(@RequestBody Patient patient , @PathVariable Long id) {
+	@RequestMapping(value = "/patient", method = RequestMethod.POST)
+	public ResponseEntity<Object> createPatient(@RequestBody Patient patient ) {
 		Patient savedPatient = patientRepository.save(patient);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/PatientAddress/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Object> createPatientAddress(@RequestBody PatientAddress patientAddress , @PathVariable Long id) {
+	@RequestMapping(value = "/patientAddress", method = RequestMethod.POST)
+	public ResponseEntity<Object> createPatientAddress(@RequestBody PatientAddress patientAddress ) {
 		PatientAddress savedPatientAddress = patientAddressRepository.save(patientAddress);
 		return ResponseEntity.noContent().build();
 	}
 	
 	
-	@RequestMapping(value = "/PatientsAddressManytoOne/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Object> createPatientAddressManytoOne(@RequestBody PatientsAddressManytoOne patientsAddressManytoOne , @PathVariable Long id) {
-		PatientsAddressManytoOne savedPatientAdd = patientsAddressManytoOneRepository.save(patientsAddressManytoOne);
-		return ResponseEntity.noContent().build();
-	}
+	
 
 	
 		

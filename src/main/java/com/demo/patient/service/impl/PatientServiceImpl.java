@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.demo.patient.model.Patient;
-import com.demo.patient.model.PatientAddress;
-import com.demo.patient.model.PatientsAddressManytoOne;
+import com.demo.patient.entity.Patient;
+import com.demo.patient.entity.PatientAddress;
 import com.demo.patient.repository.PatientAddressRepository;
+
 import com.demo.patient.repository.PatientRepository;
-import com.demo.patient.repository.PatientsAddressManytoOneRepository;
+
 import com.demo.patient.service.PatientService;
 
-import com.demo.patient.repository.PatientsAddressManytoOneRepository;;
+
 @Component
 public class PatientServiceImpl implements PatientService {
 
@@ -23,8 +23,8 @@ public class PatientServiceImpl implements PatientService {
 	@Autowired
 	private PatientAddressRepository patientAddressRepository;
 	
-	@Autowired
-	private PatientsAddressManytoOneRepository patientsAddressManytoOneRepository;
+	
+	
 	
 	@Override
 	public List<Patient> getPatientDetails() {
@@ -47,17 +47,7 @@ public class PatientServiceImpl implements PatientService {
 		patientAddressRepository.deleteById(id);
 		return;
 	}
-	@Override
-	public List<PatientsAddressManytoOne> getPatientsAddressManytoOneDetails() {
-		return patientsAddressManytoOneRepository.findAll();
-	}
+	
 	
 
-
-	@Override
-	public void deletePatientsAddressManytoOneDetails(long pid) {
-		patientsAddressManytoOneRepository.deleteById(pid);
-		return;	
-	}
-	
 }
