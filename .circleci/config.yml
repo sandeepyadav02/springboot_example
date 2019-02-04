@@ -1,13 +1,19 @@
-version:2
-jobs:
-  build:
-    docker:
-      -image: circleci/openjdk:8
+--- 
+jobs: 
+  build: 
+    docker: 
+      ? "-image"
+      : "circleci/openjdk:8"
+    steps: 
+      ? "-checkout"
+      : 
+        path: $CIRCLE_PROJECT_REPONAME
+      ? "-run"
+      : 
+        command: "mvn -DskipTests clean install"
+        name: "maven build"
     working_directory: ~/DemoOnetoManyRelation
-
-    steps:
-      -checkout
-      -run: mvn -DskipTests clean install
+version: 2
          
 
 
