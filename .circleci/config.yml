@@ -5,12 +5,10 @@ jobs:
      docker:
         -image: circleci/openjdk:8
      steps:
-        - checkout:
-            path: $CIRCLE_PROJECT_REPONAME
-        - run:
-             command: mvn -DskipTests clean install
-             name: mavenBuild
-             shell: /bin/bash
+        - checkout
+            
+        - run: mvn clean install -DskipTests
+             
              
          
 
