@@ -3,7 +3,7 @@ jobs:
    build:
      working_directory: ~/build
      docker:
-        image: circleci/openjdk:8
+        -image: circleci/openjdk:8
      steps:
         - checkout:
             path: $CIRCLE_PROJECT_REPONAME
