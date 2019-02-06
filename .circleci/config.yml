@@ -13,12 +13,9 @@ jobs:
             docker_layer_caching: true
         
 
-        - run:
-          name: Build and push Docker image
-          command: |
-             
-                TAG=0.1.$CIRCLE_BUILD_NUM
-                docker build -f DemoOnetoManyRelation/Dockerfile -t sandeepyadav02/springboot_example .
-                docker login -u $DOCKER_USER -p $DOCKER_PASS         
-                docker push sandeepyadav02/springboot_example:$TAG
+        - run: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -f DemoOnetoManyRelation/Dockerfile -t sandeepyadav02/springboot_example .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS         
+            docker push sandeepyadav02/springboot_example:$TAG
 
