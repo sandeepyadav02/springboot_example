@@ -17,5 +17,5 @@ jobs:
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker build -f ./Dockerfile -t springboot_example:$TAG .
             docker login -u $DOCKER_USER -p $DOCKER_PASS         
-            docker push sandy0204/sandeep:$TAG
+            docker push sandy0204/sandeep/springboot_example:$TAG
 
