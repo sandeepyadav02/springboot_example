@@ -25,7 +25,7 @@ jobs:
           command: |
              
                 TAG=0.1.$CIRCLE_BUILD_NUM
-                docker build -f Dockerfile -t DemoOnetomanyRelation/springboot_example .
+                docker build -f DemoOnetoManyRelation/Dockerfile -t sandeepyadav02/springboot_example .
                 docker login -u $DOCKER_USER -p $DOCKER_PASS         
-                docker push DemoOnetomanyRelation/springboot_example:$TAG
+                docker push sandeepyadav02/springboot_example:$TAG
 
