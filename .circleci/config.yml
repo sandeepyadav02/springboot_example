@@ -20,7 +20,10 @@ jobs:
             name: build and push docker image
             command: |
                 TAG=0.1.$CIRCLE_BUILD_NUM
-                docker build -f ./Dockerfile -t sandy0204/springboot:$TAG .
-                docker login -u $DOCKER_USER -p $DOCKER_PASS         
-                docker push sandy0204/springboot:$TAG
+                docker build -f ./Dockerfile -t sandy0204/springboot .
+                docker login -u $DOCKER_USER -p $DOCKER_PASS 
+                for tag in {${TAG},latest}; do
+                  docker tag sandy0204/springboot sandy/springboot:${tag}        
+                  docker push sandy0204/springboot:${Tag}
+                done
 
