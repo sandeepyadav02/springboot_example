@@ -22,8 +22,6 @@ jobs:
                 TAG=0.1.$CIRCLE_BUILD_NUM
                 docker build -f ./Dockerfile -t sandy0204/springboot .
                 docker login -u $DOCKER_USER -p $DOCKER_PASS 
-                for tag in {${TAG},latest}; do
-                  docker tag sandy0204/springboot sandy/springboot:${tag}        
-                  docker push sandy0204/springboot:${Tag}
-                done
+                docker tag sandy0204/springboot sandy/springboot:latest       
+                docker push sandy0204/springboot:latest
 
