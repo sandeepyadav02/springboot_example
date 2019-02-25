@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: springboot-service-example
+spec:
+ selector: 
+  matchLabels:
+    app: springboot-service-example
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: springboot-service-example
+   spec:
+     containers:
+       - image: gcr.io/adept-strand-231406/sandy0204/springboot:latest
+         name: springboot-deploy-image
+         env:
+         ports:
+           - containerPort: 8080
+
+
+
+
